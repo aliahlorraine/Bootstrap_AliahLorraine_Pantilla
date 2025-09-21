@@ -176,7 +176,7 @@
                                             <td class="action-buttons">
                                                 <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
                                                 <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i></button>
-                                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -192,7 +192,7 @@
                                             <td class="action-buttons">
                                                 <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
                                                 <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i></button>
-                                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -208,7 +208,7 @@
                                             <td class="action-buttons">
                                                 <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
                                                 <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i></button>
-                                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -224,7 +224,7 @@
                                             <td class="action-buttons">
                                                 <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
                                                 <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i></button>
-                                                <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -247,6 +247,25 @@
                 </footer>
             </div>
         </div>
+
+        <!--FOR DELETING STUDENTS-->
+        <div class="modal fade" id="deleteStudents" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to logout?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                            <a href="../index.html" class="btn btn-danger">Yes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <script src="../js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
         <script src="../js/simple-datatables.min.js" crossorigin="anonymous"></script>
