@@ -76,10 +76,17 @@
                         <i class="fas fa-user fa-fw"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Profile Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <i class="fas fa-user-cog me-2"></i> Profile Settings</a></li>
+                        <li><a class="dropdown-item" href="#!" data-bs-toggle="modal" data-bs-target="#activityModal">
+                            <i class="fas fa-list-alt me-2"></i> Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+                        <li><a class="dropdown-item" href="../index.html">
+                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                             <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
             </ul>
@@ -150,7 +157,7 @@
                         </ol>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
+                                <div class="card bg-primary text-white mb-4"data-bs-toggle="modal" data-bs-target="#studentsModal" style="cursor: pointer;">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="me-3">
@@ -169,11 +176,11 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
+                                <div class="card bg-danger text-white mb-4"data-bs-toggle="modal" data-bs-target="#facultyModal" style="cursor: pointer;">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="me-3">
-                                                <i class="fas fa-chalkboard-teacher fa-2x"></i>
+                                                <i class="fas fa-users fa-2x"></i>
                                             </div>
                                             <div>
                                                 <div class="small">Total Faculty</div>
@@ -188,7 +195,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-info text-white mb-4">
+                                <div class="card bg-info text-white mb-4"data-bs-toggle="modal" data-bs-target="#coursesModal" style="cursor: pointer;">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="me-3">
@@ -207,7 +214,7 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
+                                <div class="card bg-warning text-white mb-4" data-bs-toggle="modal" data-bs-target="#eventsModal" style="cursor: pointer;">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="me-3">
@@ -314,8 +321,8 @@
         <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <div class="modal-header bg-danger">
+                        <h5 class="modal-title text-white" id="logoutModalLabel">Confirm Logout</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -328,6 +335,152 @@
                 </div>
             </div>
         </div>
+
+        <!-- Profile Modal -->
+        <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title text-white" id="profileModalLabel">Profile Settings</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Change Password</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--ACTIVITY LOG MODAL-->
+        <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success">
+                            <h5 class="modal-title text-white" id="activityModalLabel">Activity Log</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Logged in at 10:30 AM</li>
+                                <li class="list-group-item">Updated profile at 11:00 AM</li>
+                                <li class="list-group-item">Viewed report at 1:15 PM</li>
+                                <li class="list-group-item">Logged out at 2:00 PM</li>
+                            </ul>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Students Modal -->
+        <div class="modal fade" id="studentsModal" tabindex="-1" aria-labelledby="studentsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary text-white">
+                        <h5 class="modal-title text-white" id="eventsModalLabel" style="color: black;"><b>Total Students</b></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>There are currently <b>5,248</b> enrolled students.</p>
+                            <ul class="list-group">
+                                <li class="list-group-item">College of Computer Science – 1,250</li>
+                                <li class="list-group-item">College of Engineering – 1,100</li>
+                                <li class="list-group-item">College of Business – 900</li>
+                                <li class="list-group-item">College of Education – 1,000</li>
+                                <li class="list-group-item">Others – 998</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Faculty Modal -->
+        <div class="modal fade" id="facultyModal" tabindex="-1" aria-labelledby="facultyModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                       <h5 class="modal-title text-white" id="eventsModalLabel" style="color: black;"><b>Total Faculty</b></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>There are <b>245</b> faculty members in the institution.</p>
+                        <ul class="list-group">
+                        <li class="list-group-item">College of Computer Science – 50 faculty</li>
+                        <li class="list-group-item">College of Engineering – 70 faculty</li>
+                        <li class="list-group-item">College of Business – 45 faculty</li>
+                        <li class="list-group-item">College of Education – 60 faculty</li>
+                        <li class="list-group-item">Others – 20 faculty</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Modal -->
+        <div class="modal fade" id="coursesModal" tabindex="-1" aria-labelledby="coursesModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title text-white" id="eventsModalLabel" style="color: black;"><b>Active Courses</b></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>There are currently <b>32</b> active courses offered.</p>
+                        <ul class="list-group">
+                        <li class="list-group-item">Computer Science – 10 courses</li>
+                        <li class="list-group-item">Engineering – 8 courses</li>
+                        <li class="list-group-item">Business – 6 courses</li>
+                        <li class="list-group-item">Education – 5 courses</li>
+                        <li class="list-group-item">Others – 3 courses</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Modal -->
+        <div class="modal fade" id="eventsModal" tabindex="-1" aria-labelledby="eventsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-warning text-dark">
+                        <h5 class="modal-title text-white" id="eventsModalLabel" style="color: black;"><b>Upcoming Events</b></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>There are <b>8</b> upcoming events scheduled:</p>
+                        <ul class="list-group">
+                            <li class="list-group-item">Faculty Meeting – Tomorrow</li>
+                            <li class="list-group-item">Student Council Election – Next Week</li>
+                            <li class="list-group-item">Foundation Day – 2 weeks from now</li>
+                            <li class="list-group-item">Sports Festival – Next Month</li>
+                            <li class="list-group-item">Research Conference – October 2025</li>
+                            <li class="list-group-item">Alumni Homecoming – November 2025</li>
+                            <li class="list-group-item">Christmas Program – December 2025</li>
+                            <li class="list-group-item">Graduation Ceremony – March 2026</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <script src="../js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>

@@ -72,10 +72,17 @@
                         <i class="fas fa-user fa-fw"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Profile Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="#!" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <i class="fas fa-user-cog me-2"></i> Profile Settings</a></li>
+                        <li><a class="dropdown-item" href="#!" data-bs-toggle="modal" data-bs-target="#activityModal">
+                            <i class="fas fa-list-alt me-2"></i> Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="../index.html">Logout</a></li>
+                        <li><a class="dropdown-item" href="../index.html">
+                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                             <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
             </ul>
@@ -133,7 +140,7 @@
                                     </ol>
                                 </div>
                                 <div class="col-sm-6 text-end">
-                                    <button type="button" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">
                                         <i class="fas fa-plus"></i> Add New Student
                                     </button>
                                 </div>
@@ -175,7 +182,7 @@
                                             <td><span class="badge bg-success">Enrolled</span></td>
                                             <td class="action-buttons">
                                                 <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editStudentsModal"><i class="fas fa-edit"></i></button>
-                                                <button class="btn btn-info btn-sm view-btn" data-bs-toggle="modal" data-bs-target="#viewStudentsModal"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#student1Modal"><i class="fas fa-eye"></i></button>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -191,7 +198,7 @@
                                             <td><span class="badge bg-success">Enrolled</span></td>
                                             <td class="action-buttons">
                                                 <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editStudentsModal"><i class="fas fa-edit"></i></button>
-                                                <button class="btn btn-info btn-sm view-btn" data-bs-toggle="modal" data-bs-target="#viewStudentsModal"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#student2Modal"><i class="fas fa-eye"></i></button>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -207,7 +214,7 @@
                                             <td><span class="badge bg-warning text-dark">Pending</span></td>
                                             <td class="action-buttons">
                                                 <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editStudentsModal"><i class="fas fa-edit"></i></button>
-                                                <button class="btn btn-info btn-sm view-btn" data-bs-toggle="modal" data-bs-target="#viewStudentsModal"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#student3Modal"><i class="fas fa-eye"></i></button>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -222,8 +229,8 @@
                                             <td>ana.gonzales@student.msu.edu</td>
                                             <td><span class="badge bg-success">Enrolled</span></td>
                                             <td class="action-buttons">
-                                                <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
-                                                <button class="btn btn-info btn-sm"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-primary btn-sm edit-btn" data-bs-toggle="modal" data-bs-target="#editStudentsModal"><i class="fas fa-edit"></i></button>
+                                                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#student4Modal"><i class="fas fa-eye"></i></button>
                                                 <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteStudents"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -252,8 +259,8 @@
         <div class="modal fade" id="deleteStudents" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="logoutModalLabel">Confirm Delete</h5>
+                        <div class="modal-header bg-danger">
+                            <h5 class="modal-title text-white" id="logoutModalLabel">Confirm Delete</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -267,79 +274,272 @@
                 </div>
             </div>
 
-             <!--View Students Modal-->
-            <div class="modal fade" id="viewStudentsModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Students Details</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong>Student Id:</strong> <span id="viewStudentId"></span></p>
-                            <p><strong>Name:</strong> <span id="viewName"></span></p>
-                            <p><strong>Course:</strong> <span id="viewCourse"></span></p>
-                            <p><strong>Year Level:</strong> <span id="viewYearLevel"></span></p>
-                            <p><strong>Contact:</strong> <span id="viewContact"></span></p>
-                            <p><strong>Status:</strong> <span id="viewStatus"></span></p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
+        <!--View Students Modal-->
+        <!--STUDENT 1-->
+        <div class="modal fade" id="student1Modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                     <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Student Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Student Id:</strong> 2025-001</p>
+                        <p><strong>Name:</strong> Juan Dela Cruz</p>
+                        <p><strong>Course:</strong> BS Computer Science</p>
+                        <p><strong>Year Level:</strong> 3rd Year</p>
+                        <p><strong>Contact:</strong> juan.delacruz@student.msu.edu</p>
+                        <p><strong>Status:</strong> Enrolled</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!--Edit Students Modal-->
-            <div class="modal fade" id="editStudentsModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit Students</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="editCourseForm">
-                            <div class="mb-3">
-                                <label class="form-label">Student Id</label>
-                                <input type="text" class="form-control" id="editStudentId">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Name</label>
-                                <input type="text" class="form-control" id="editName">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Course</label>
-                                <input type="text" class="form-control" id="editCourse">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Year Level</label>
-                                <input type="number" class="form-control" id="editYearlevel">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Contact</label>
-                                <input type="text" class="form-control" id="editYearlevel">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Status</label>
-                                <select class="form-select" id="editStatus">
-                                <option value="Active">Enrolled</option>
-                                <option value="Pending">Pending</option>
-                                </select>
-                            </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="saveEdit">Save</button>
-                        </div>
+        <!--STUDENT 2-->
+        <div class="modal fade" id="student2Modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Student Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Student Id:</strong> 2025-002</p>
+                        <p><strong>Name:</strong> Maria Santos</p>
+                        <p><strong>Course:</strong> BS Information Technology</p>
+                        <p><strong>Year Level:</strong> 2nd Year</p>
+                        <p><strong>Contact:</strong> maria.santos@student.msu.edu</p>
+                        <p><strong>Status:</strong> Enrolled</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            
+        <!--STUDENT 3-->
+        <div class="modal fade" id="student3Modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Student Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Student Id:</strong> 2025-003</p>
+                        <p><strong>Name:</strong> Pedro Reyes</p>
+                        <p><strong>Course:</strong> BS Computer Science</p>
+                        <p><strong>Year Level:</strong> 4th Year</p>
+                        <p><strong>Contact:</strong> pedro.reyes@student.msu.edu</p>
+                        <p><strong>Status:</strong> Pending</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            
+        <!--STUDENT 4-->
+        <div class="modal fade" id="student4Modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white">Student Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Student Id:</strong> 2025-004</p>
+                        <p><strong>Name:</strong> Ana Gonzales</p>
+                        <p><strong>Course:</strong> BS Information Technology</p>
+                        <p><strong>Year Level:</strong> 1st Year</p>
+                        <p><strong>Contact:</strong> ana.gonzales@student.msu.edu</p>
+                        <p><strong>Status:</strong> Enrolled</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Edit Students Modal-->
+        <div class="modal fade" id="editStudentsModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title text-white">Edit Students</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editCourseForm">
+                        <div class="mb-3">
+                            <label class="form-label">Student Id</label>
+                            <input type="text" class="form-control" id="editStudentId">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" id="editName">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Course</label>
+                            <input type="text" class="form-control" id="editCourse">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Year Level</label>
+                            <input type="number" class="form-control" id="editYearlevel">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contact</label>
+                            <input type="text" class="form-control" id="editYearlevel">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="editStatus">
+                            <option value="Active">Enrolled</option>
+                            <option value="Pending">Pending</option>
+                            </select>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="saveEdit">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--ADDING STUDENTS-->
+        <div class="modal fade" id="addStudentModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title text-white">Add New Student</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addFacultyForm">
+                        <div class="mb-3">
+                            <label class="form-label">Student Id</label>
+                            <input type="number" class="form-control" name="studentid" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" name="Name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Course</label>
+                            <input type="text" class="form-control" name="course" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Year Level</label>
+                            <input type="text" class="form-control" name="yearlevel" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contact</label>
+                            <input type="email" class="form-control" name="contact" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" name="status" required>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">On Leave</option>
+                            </select>
+                        </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" form="addFacultyForm" class="btn btn-primary">Save Student</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Modal -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h5 class="modal-title text-white" id="logoutModalLabel">Confirm Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to logout?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <a href="../index.html" class="btn btn-danger">Yes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Modal -->
+        <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title text-white" id="profileModalLabel">Profile Settings</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" value="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Change Password</label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--ACTIVITY LOG MODAL-->
+        <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h5 class="modal-title text-white" id="activityModalLabel">Activity Log</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group">
+                        <li class="list-group-item">Logged in at 10:30 AM</li>
+                        <li class="list-group-item">Updated profile at 11:00 AM</li>
+                        <li class="list-group-item">Viewed report at 1:15 PM</li>
+                        <li class="list-group-item">Logged out at 2:00 PM</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script src="../js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="../js/scripts.js"></script>
         <script src="../js/simple-datatables.min.js" crossorigin="anonymous"></script>
